@@ -1,198 +1,259 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meus Cursos</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f9f9f9;
-    }
-
-    header {
-      background-color: #004080;
-      color: #fff;
-      padding: 1.5rem 2rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      font-size: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    nav {
-      background-color: #003366;
-      text-align: center;
-      padding: 0.5rem;
-    }
-
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #f4a261;
-    }
-
-    section {
-      padding: 2rem 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    section h2 {
-      font-size: 1.8rem;
-      color: #004080;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .about, .differentials {
-      text-align: center;
-    }
-
-    .about p, .differentials p {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    .courses {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .course-card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .course-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .course-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .course-card h3 {
-      font-size: 1.2rem;
-      margin: 1rem 0;
-      color: #004080;
-    }
-
-    .course-card button {
-      display: inline-block;
-      margin: 1rem 0;
-      padding: 0.5rem 1rem;
-      background-color: #f4a261;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s;
-    }
-
-    .course-card button:hover {
-      background-color: #e76f51;
-    }
-
-    footer {
-      background-color: #004080;
-      color: #fff;
-      text-align: center;
-      padding: 1.5rem 1rem;
-      margin-top: 2rem;
-    }
-
-    footer p {
-      font-size: 0.9rem;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner Semanal - Dieta e Treino</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 5px;
+        }
+        h1 {
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+            font-size: 2.2em;
+        }
+        h2 {
+            font-size: 1.2em;
+            color: #60a5fa;
+            font-weight: normal;
+        }
+        .note {
+            text-align: center;
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+        .day {
+            background-color: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 6px solid #3b82f6;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .day:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        h3 {
+            margin-top: 0;
+            color: #1e40af;
+            font-size: 1.5em;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #e5e7eb;
+            display: flex;
+            align-items: center;
+        }
+        li:last-child {
+            border-bottom: none;
+        }
+        .checkbox {
+            margin-right: 12px;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #9ca3af;
+            border-radius: 4px;
+            position: relative;
+            outline: none;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .checkbox:checked {
+            background-color: #16a34a;
+            border-color: #16a34a;
+        }
+        .checkbox:checked::after {
+            content: '✅';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 12px;
+        }
+        strong {
+            color: #0b1c55;
+        }
+        .meal-list {
+            margin-left: 30px;
+        }
+        
+        /* OTIMIZAÇÃO PARA TELAS MENORES */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1em;
+            }
+            .day {
+                padding: 15px;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            .meal-list {
+                margin-left: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Cabeçalho -->
-  <header>
-    <h1>Meus Cursos de Educação</h1>
-    <p>Transformando vidas através do ensino para concursos e educação financeira.</p>
-  </header>
 
-  <!-- Navegação -->
-  <nav>
-    <a href="#about">Quem Sou</a>
-    <a href="#differentials">Diferenciais</a>
-    <a href="#courses">Cursos</a>
-  </nav>
+    <div class="container">
+        <h1>Planner Semanal</h1>
+        <h2>Dieta 1500 kcal | Jejum Intermitente | Treino Noturno</h2>
+        <p class="note">✅ - Marque quando a tarefa for concluída e sinta a satisfação do progresso!</p>
 
-  <!-- Seção Quem Sou -->
-  <section id="about" class="about">
-    <h2>Quem Sou</h2>
-    <p>Sou um educador com paixão por ensinar e ajudar pessoas a alcançarem seus objetivos, seja na preparação para concursos públicos ou na conquista da liberdade financeira. Com anos de experiência na área de educação, desenvolvi métodos práticos e eficientes que já transformaram a vida de centenas de alunos.</p>
-  </section>
+        <div class="day">
+            <h3>Segunda-feira</h3>
+            <ul>
+                <li>
+                    <input type="checkbox" class="checkbox"> 
+                    <div>
+                        <strong>12h – Almoço (1100 kcal):</strong>
+                        <ul class="meal-list">
+                            <li>4 col. de sopa de arroz (160g)</li>
+                            <li>4 col. de sopa de feijão (200g)</li>
+                            <li>1 sobrecoxa grande assada/grelhada (200g)</li>
+                            <li>2 ovos cozidos</li>
+                            <li>1 banana grande (150g)</li>
+                            <li>1 col. de sopa de chia</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> 
+                    <div>
+                        <strong>17h – Lanche (400 kcal):</strong>
+                        <ul class="meal-list">
+                            <li>1 tapioca com 1 ovo mexido e 1 fatia de queijo (30g)</li>
+                            <li>1 mexerica</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> <strong>Treino 22h – Cardio ou musculação 40 min</strong>
+                </li>
+            </ul>
+        </div>
 
-  <!-- Seção Diferenciais -->
-  <section id="differentials" class="differentials">
-    <h2>Diferenciais</h2>
-    <p>✔ Metodologia prática e direta ao ponto.</p>
-    <p>✔ Material atualizado e focado nos principais editais.</p>
-    <p>✔ Suporte exclusivo para alunos.</p>
-    <p>✔ Dicas de organização financeira e planejamento de estudos.</p>
-  </section>
+        <div class="day">
+            <h3>Terça-feira</h3>
+            <ul>
+                <li>
+                    <input type="checkbox" class="checkbox"> 
+                    <div>
+                        <strong>12h – Almoço (1100 kcal):</strong>
+                        <ul class="meal-list">
+                            <li>200g de macarrão cozido</li>
+                            <li>150g de carne moída refogada</li>
+                            <li>2 ovos cozidos</li>
+                            <li>1 banana grande (150g)</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> 
+                    <div>
+                        <strong>17h – Lanche (400 kcal):</strong>
+                        <ul class="meal-list">
+                            <li>1 tapioca com 1 ovo mexido</li>
+                            <li>1 lata de sardinha em óleo (escorra o óleo)</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> <strong>Treino 22h – Cardio ou musculação 40 min</strong>
+                </li>
+            </ul>
+        </div>
 
-  <!-- Seção Cursos -->
-  <section id="courses" class="courses">
-    <h2>Cursos</h2>
-<div class="courses">
-      <div class="course-card">
-        <img src="https://via.placeholder.com/300x200" alt="Curso 1">
-        <h3>Curso de Educação Financeira</h3>
-        <button onclick="window.open('https://www.hotmart.com', '_blank')">Comprar no Hotmart</button>
-      </div>
-      <div class="course-card">
-        <img src="https://via.placeholder.com/300x200" alt="Curso 2">
-        <h3>Curso Preparatório para Concursos</h3>
-        <button onclick="window.open('https://www.hotmart.com', '_blank')">Comprar no Hotmart</button>
-      </div>
-      <div class="course-card">
-        <img src="https://via.placeholder.com/300x200" alt="Curso 3">
-        <h3>Planejamento para Estudos</h3>
-        <button onclick="window.open('https://www.hotmart.com', '_blank')">Comprar no Hotmart</button>
-      </div>
+        <div class="day">
+            <h3>Quarta-feira</h3>
+            <ul>
+                <li>
+                    <input type="checkbox" class="checkbox"> 
+                    <div>
+                        <strong>12h – Almoço (1100 kcal):</strong>
+                        <ul class="meal-list">
+                            <li>5 col. de sopa de arroz (200g)</li>
+                            <li>4 col. de sopa de feijão (200g)</li>
+                            <li>1 bisteca de porco grelhada (200g)</li>
+                            <li>2 ovos cozidos</li>
+                            <li>1 banana grande (150g)</li>
+                            <li>1 col. de sopa de chia</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> 
+                    <div>
+                        <strong>17h – Lanche (400 kcal):</strong>
+                        <ul class="meal-list">
+                            <li>1 tapioca com 1 ovo mexido e 1 fatia de queijo (30g)</li>
+                            <li>1 mexerica</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> <strong>Treino 22h – Cardio ou musculação 40 min</strong>
+                </li>
+            </ul>
+        </div>
+
+        <div class="day">
+            <h3>Resto da Semana</h3>
+            <ul>
+                <li>
+                    <input type="checkbox" class="checkbox"> <strong>Quinta-feira:</strong> Repetir Cardápio A
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> <strong>Sexta-feira:</strong> Repetir Cardápio B
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> <strong>Sábado:</strong> Repetir Cardápio C
+                </li>
+                <li>
+                    <input type="checkbox" class="checkbox"> <strong>Domingo:</strong> Dia de descanso. Ou repita um cardápio de sua preferência.
+                </li>
+            </ul>
+        </div>
     </div>
-  </section>
 
-  <!-- Rodapé -->
-  <footer>
-    <p>© 2025 Meus Cursos de Educação. Todos os direitos reservados.</p>
-  </footer>
 </body>
 </html>
